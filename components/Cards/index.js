@@ -20,7 +20,11 @@
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then(response => {
-    console.log(response.data)
+    console.log(response.data.articles)
+    response.data.articles.forEach(element => {
+        articles(element);
+        
+    });
     
     })
   .catch(error => { 
@@ -28,18 +32,33 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
   });
 
 
-  function article1 (){
+  function articles (article){
+    //   element list
     const divContainer = document.createElement('div');
     const divHeadline = document.createElement('div');
     const divAuthor = document.createElement('div');
     const divImg = document.createElement('div');
     const img = document.createElement('img');
-    const span = document.createElement('sppan');
-  
+    const span = document.createElement('span');
+
+//   element classlist
     divContainer.classList.add('card');
     divHeadline.classList.add('headline');
     divAuthor.classList.add('author');
     divImg.classList.add('img-container');
 
-    img.setAttribute('src', )
-  }
+// element attributes 
+    img.setAttribute('src', article.authorPhoto )
+
+// element text content
+    divHeadline.textContent = `${article.headline}`
+    divImg.textContent = img;
+    span.textContent = `by ${article.authorName}`
+  
+
+    divAuthor.append(divImg,span);
+    divContainer.append(divHeadline,divAuthor);
+
+    return divContainer;
+};
+
