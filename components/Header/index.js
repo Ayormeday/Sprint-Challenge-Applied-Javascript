@@ -29,7 +29,8 @@ function Header() {
     return divHeader;
 };
 
-const headerComponent = document.createElement('div');
-headerComponent.classList.add('headerContainer');
+// const headerComponent = document.createElement('div');
+// headerComponent.classList.add('headerContainer');
+const getHeaderContainer = document.querySelector('.header-container')
 
-headerComponent.appendChild(Header());
+getHeaderContainer.appendChild(Header());
